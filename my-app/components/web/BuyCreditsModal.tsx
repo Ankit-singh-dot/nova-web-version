@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { X, Check, Zap, Sparkles, ArrowRight } from "lucide-react";
 import confetti from "canvas-confetti";
 
@@ -20,6 +20,30 @@ export default function BuyCreditsModal({
   const [tab, setTab] = useState<"credits" | "upgrade">(initialTab);
   const [selectedPack, setSelectedPack] = useState<number>(100);
   const [selectedPlan, setSelectedPlan] = useState<string>("pro");
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const origBodyOverflow = document.body.style.overflow;
+    const origHtmlOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    const win = window as unknown as {
+      lenis?: { stop: () => void; start: () => void };
+    };
+    if (win.lenis?.stop) {
+      win.lenis.stop();
+    }
+
+    return () => {
+      document.body.style.overflow = origBodyOverflow;
+      document.documentElement.style.overflow = origHtmlOverflow;
+      if (win.lenis?.start) {
+        win.lenis.start();
+      }
+    };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 

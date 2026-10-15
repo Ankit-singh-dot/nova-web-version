@@ -96,12 +96,13 @@ export default function Navbar({
             Templates
           </button>
 
-          <button
+          <Link
+            href="/dashboard"
             onClick={onOpenDashboard}
             className="px-3 py-1.5 rounded-full text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 transition-all"
           >
             Dashboard
-          </button>
+          </Link>
 
           <a
             href="https://nova.bridgeye.com/pricing"
@@ -228,15 +229,16 @@ export default function Navbar({
           >
             Templates
           </button>
-          <button
+          <Link
+            href="/dashboard"
             onClick={() => {
               onOpenDashboard?.();
               setMobileMenuOpen(false);
             }}
             className="text-left px-3 py-2 text-sm text-neutral-700 hover:text-neutral-950 rounded-lg hover:bg-neutral-100"
           >
-            My Neural Apps Dashboard
-          </button>
+            Dashboard &amp; Architectures
+          </Link>
           <button
             onClick={() => {
               onOpenStudio?.();

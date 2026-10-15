@@ -318,6 +318,15 @@ export default function CinematicHero({
               />
             </div>
 
+            {/* Dashboard Link */}
+            <Link
+              href="/dashboard"
+              className="hidden lg:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-neutral-300 bg-white/90 backdrop-blur-2xl text-neutral-800 hover:text-black hover:bg-neutral-100 text-xs font-medium transition-all shadow-xs"
+              title="Dashboard & Project History"
+            >
+              <span>Dashboard</span>
+            </Link>
+
             {/* Studio / Sign in Button */}
             <button
               onClick={onOpenStudio}
